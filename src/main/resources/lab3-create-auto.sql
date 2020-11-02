@@ -4,17 +4,18 @@ CREATE SCHEMA IF NOT EXISTS `pazyniuk` ;
 USE `pazyniuk` ;
 
 /* Dropping tables if they exist */
-
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `pazyniuk`.`album` ;
 DROP TABLE IF EXISTS `pazyniuk`.`genre` ;
 DROP TABLE IF EXISTS `pazyniuk`.`record_label` ;
-DROP TABLE IF EXISTS `pazyniuk`.`gender` ;
-DROP TABLE IF EXISTS `pazyniuk`.`artist` ;
 DROP TABLE IF EXISTS `pazyniuk`.`country` ;
-DROP TABLE IF EXISTS `pazyniuk`.`song` ;
 DROP TABLE IF EXISTS `pazyniuk`.`credit_card` ;
-DROP TABLE IF EXISTS `pazyniuk`.`user_song` ;
+DROP TABLE IF EXISTS `pazyniuk`.`artist` ;
+DROP TABLE IF EXISTS `pazyniuk`.`song` ;
 DROP TABLE IF EXISTS `pazyniuk`.`itunes_user` ;
+DROP TABLE IF EXISTS `pazyniuk`.`gender` ;
+DROP TABLE IF EXISTS `pazyniuk`.`user_song` ;
+SET FOREIGN_KEY_CHECKS = 1;
 
 /* Creating new tables */
 
@@ -120,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `pazyniuk`.`itunes_user` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `pazyniuk`.`user_song` (
+  `id` INT NOT NULL UNIQUE AUTO_INCREMENT,
   `id_user` INT NOT NULL,
   `id_song` INT NOT NULL,
   PRIMARY KEY (`id_user`, `id_song`),
@@ -264,16 +266,16 @@ COMMIT;
 
 START TRANSACTION;
 USE `pazyniuk`;
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (1, 2);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (1, 4);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (4, 3);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (4, 5);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (4, 7);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (5, 4);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (9, 6);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (9, 7);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (9, 10);
-INSERT INTO `pazyniuk`.`user_song` (`id_user`, `id_song`) VALUES (10, 3);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (1, 1, 2);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (2, 1, 4);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (3, 4, 3);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (4, 4, 5);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (5, 4, 7);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (6, 5, 4);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (7, 9, 6);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (8, 9, 7);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (9, 9, 10);
+INSERT INTO `pazyniuk`.`user_song` (`id`, `id_user`, `id_song`) VALUES (10, 10, 3);
 COMMIT;
 
 /* Creating indexes for faster searches */
