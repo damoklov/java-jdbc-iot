@@ -1,9 +1,10 @@
 package com.pazyniuk.passive.model;
 
-public class Album {
+public class Artist {
     private long id = 1L;
     private String name;
-    private String year;
+    private int country;
+    private int gender;
 
     public final long getId() {
         return id;
@@ -21,11 +22,19 @@ public class Album {
         this.name = name;
     }
 
-    public final String getYear() {
-        return year;
+    public final int getCountry() {
+        return country;
     }
 
-    public final void setYear(String year) {
-        this.year = year;
+    public final void setCountry(int country) {
+        this.country = country;
+    }
+
+    public final int getGender() {
+        return gender;
+    }
+
+    public final void setGender(int gender) {
+        this.gender = gender;
     }
 }
