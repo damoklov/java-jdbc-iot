@@ -50,7 +50,7 @@
                     </c:if>
 
                     <fieldset class="form-group">
-                        <label>Artist Name</label> <input type="text" value="<c:out value='${country.name}' />" class="form-control" name="name" required="required">
+                        <label>Country Name</label> <input type="text" value="<c:out value='${country.name}' />" class="form-control" name="name" required="required">
                     </fieldset>
 
                     <button type="submit" class="btn btn-success">Save</button>
